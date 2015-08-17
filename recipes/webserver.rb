@@ -45,11 +45,11 @@ firewall_rule 'http' do
   action :allow
 end
 
-#httpd_module 'php5' do
-	#instance 'customers'
-#end
+httpd_module 'php5' do
+	instance 'customers'
+end
 
 package 'php5-mysql' do
 	action :install
-	notifies :restart, 'httpd_service[customers]'
+	notifies :restart, 'httpd_service[customers]', :immediately
 end
